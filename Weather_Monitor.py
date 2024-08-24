@@ -27,10 +27,12 @@ while True:
 	print(f"humidity: {humidity}")
 	print(f"pressure: {pressure} ")
 	print(f"date/time: {datetime.now()}")
-	sleep(1800)
+
 	with open('Weather_Data.csv', mode='a') as weather_file:
 		weather_writer = csv.writer(weather_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
 		weather_writer.writerow([f"{datetime.now()}",f"{humidity}",f"{pressure}" "0"])
+	sleep(1695)
+	
 
 
 
