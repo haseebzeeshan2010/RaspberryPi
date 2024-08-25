@@ -49,20 +49,20 @@ while True:
 		current_time = datetime.now()
 		
 		pressure = sense.get_pressure()
-		temperature = sense.get_temperature_from_pressure()
 		humidity = sense.get_humidity()
 
 
 		for i in range(0,20):
 			pressure += sense.get_pressure()
 			humidity += sense.get_humidity()
-			temperature += sense.get_temperature_from_pressure()
 			time.sleep(5)
 			#sleep(1)
 
 		pressure = pressure / 21
 		humidity = humidity / 21
-		temperature = temperature / 21
+
+
+		print(f"p: {pressure} h: {humidity}")
 		with open('Weather_Data.csv', mode='a') as weather_file:
 			weather_writer = csv.writer(weather_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-			weather_writer.writerow([f"{current_time}",f"{humidity}",f"{pressure}", f"{temperature}"])
+			weather_writer.writerow([f"{current_time}",f"{humidity}",f"{pressure}"])
