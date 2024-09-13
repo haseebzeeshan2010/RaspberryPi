@@ -1,10 +1,11 @@
 from machine import Pin
+from picozero import Speaker
 import utime
 
 trigger = Pin(3, Pin.OUT)
 echo = Pin(2, Pin.IN)
+speaker = Speaker(4)
 
-myLED = Pin(14,Pin.OUT)
 def ultra():
    trigger.low()
    utime.sleep_us(2)
@@ -18,7 +19,10 @@ def ultra():
    timepassed = signalon - signaloff
    distance = (timepassed * 0.0343) / 2
    print("The distance from object is ",distance,"cm")
+   return distance
 
 while True:
-   ultra()
-   utime.sleep(2)
+   if ultra() < 61:
+       speaker.play('c7', 0.5)
+   utime.sleep(1)
+   
