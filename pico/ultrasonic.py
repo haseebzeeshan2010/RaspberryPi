@@ -22,7 +22,7 @@ def ultra():
    return distance
 
 while True:
-   if ultra() < 55:
+   if ultra() < 50:
        speaker.play('c7', 0.5)
    utime.sleep(1)
    
